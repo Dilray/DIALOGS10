@@ -1,0 +1,20 @@
+{
+  "GradeService": {
+      "url": "http://r226-03.mmcs.rsu.ru/onboarding/api/grades/grade_assignment",
+      "token": "NNNNNNNNNNNNNNNNN",
+	  "token_var_name": "ASSIGNATOR_API_TOKEN",
+  },
+  "Discipline": {
+      "Subject": "Парадигмы и технологии программирования",
+      "Semester": 20
+  },
+  "Service": "gitlab",
+  "Projects": [  
+      { "namespace": "UITests",
+	    "tests": {
+		   "subModuleNumber": 1
+		}
+      }
+    ]
+}
+

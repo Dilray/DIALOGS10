@@ -1,0 +1,20 @@
+stages:
+  - build_test_report
+
+build_all:
+  stage: build_test_report
+  before_script:
+    - nuget restore
+    - msbuild WinFormsTestApp.sln
+  script:  
+    - $env:FLAUI_VIDEO_FOLDER="${CI_PROJECT_DIR}\failed_test_video";
+    - .\packages\NUnit.ConsoleRunner.3.17.0\tools\nunit3-console.exe UITests\bin\Debug\UITests.dll
+  after_script:
+    - .\NunitReport\bin\Debug\NunitReport.exe ${CI_PROJECT_DIR} ${GITLAB_USER_LOGIN}
+  tags:
+    - windows
+    - dotnet
+  artifacts:
+    when: on_failure
+    paths:
+      - ${CI_PROJECT_DIR}\failed_test_video
